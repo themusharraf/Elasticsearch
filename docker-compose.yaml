@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  django:
+    build: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 8001"
+    ports:
+      - "8044:8001"
+    env_file:
+      - .env
+    depends_on:
+      - pgdata
+  pgdata:
+    image: postgres:alpine
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env
+    volumes:
+      - pg_volume:/var/lib/postgresql/data
+volumes:
+  pg_volume:
