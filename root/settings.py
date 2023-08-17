@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_elasticsearch_dsl',
+    'django_elasticsearch_dsl_drf',
+    'apps'
 ]
 
 MIDDLEWARE = [
@@ -79,8 +81,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'elasticsearch:9200'
+    },
+}
+
+
+ELASTICSEARCH_INDEX_NAMES = {
+    'articles.article': 'articles',
+}
 
 LANGUAGE_CODE = 'en-us'
 

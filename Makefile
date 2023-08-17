@@ -4,3 +4,6 @@ mig:
 
 admin:
 	python manage.py createsuperuser
+
+elastic:
+	python manage.py search_index --rebuild
